@@ -1,0 +1,53 @@
+{
+  "model_revision": "v9.5-representation-repair",
+  "model_sha256": "2bbda61b2e94e975cda90ea34c08d2037938fcecc62764bff315dcac8a721fef",
+  "plans_revision": "v9.5-representation-repair",
+  "plans_sha256": "d3645ab1c2e330cebe654ca9cd72a5e3c572fb38cff8038f7780086b0797e7a0",
+  "native_revision": "v9.4-client-handover",
+  "native_status": "PENDING_REBUILD",
+  "native_pending_reason": "SketchUp and Blender are not installed on the authoring machine; the .skp and .blend are reissued at v9.5-representation-repair when the native rebuild runs.",
+  "source_sha256": "2bbda61b2e94e975cda90ea34c08d2037938fcecc62764bff315dcac8a721fef",
+  "source_objects": 2094,
+  "web_objects": 1351,
+  "excluded_objects": 743,
+  "coordinate_transform": "[x,y,z] inches -> [x,z,-y] metres; scale 0.0254",
+  "source_geometry_changed": false,
+  "files": [
+    {
+      "name": "5476-Maryland-2D-Floor-Plans-V9.4.pdf",
+      "bytes": 9648,
+      "sha256": "a309cadb5137b54afb3e1233e1619bceeb55fe32662d33c6ba997b1cd10f5c73",
+      "revision": "v9.4-client-handover"
+    },
+    {
+      "name": "5476-Maryland-Existing-House-Overview-V9.4.pdf",
+      "bytes": 1740073,
+      "sha256": "0269b5f242e2bae4a6cc38ac62d0b9b701c980060aa6ffd3e7aae8bf33ff2fe2",
+      "revision": "v9.4-client-handover"
+    },
+    {
+      "name": "5476-Maryland-Existing-House-V9.4.blend",
+      "bytes": 26353399,
+      "sha256": "35b6085856cc54d020a98421126121b23871bf7f64f1f254671788e039bc7c8d",
+      "revision": "v9.4-client-handover"
+    },
+    {
+      "name": "5476-Maryland-Existing-House-V9.4.skp",
+      "bytes": 3578986,
+      "sha256": "dd85573436b8e0f1289d7ac9ddfb6a4cf10202c09c6f4499a511a4d6d7510ac9",
+      "revision": "v9.4-client-handover"
+    },
+    {
+      "name": "5476-Maryland-Handover-and-Audit-V9.4.pdf",
+      "bytes": 7003,
+      "sha256": "88172d96383eb6fe27b7c2966aa9ae2bf1006511fc9442e784b30826524678fc",
+      "revision": "v9.4-client-handover"
+    },
+    {
+      "name": "FINAL-CLIENT-HANDOVER-V9.4.zip",
+      "bytes": 8707189,
+      "sha256": "33845bbcc5ace109e660b486598b7bafee9e03acdea70edcb71fde592847cdae",
+      "revision": "v9.4-client-handover"
+    }
+  ]
+}
