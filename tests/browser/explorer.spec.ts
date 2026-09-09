@@ -207,7 +207,12 @@ const flat = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[2] - b[2]);
 // the same movement path, which makes these checks frame-rate independent.
 async function step(page: any, direction: string, times: number) {
   const button = page.locator(`[data-step="${direction}"]`);
-  for (let i = 0; i < times; i++) await button.click();
+  await expect(button).toBeVisible();
+  // force skips the per-click actionability wait. Walk mode renders at about a
+  // frame a second under headless throttling, and that wait needs two stable
+  // animation frames, so 80-odd checked clicks alone exceed the timeout. The
+  // pad's actionability is asserted above and in the walk-mode test.
+  for (let i = 0; i < times; i++) await button.click({ force: true });
 }
 test("walk mode encloses the house, stands on a floor and reaches the upper level", async ({
   page,
@@ -279,7 +284,7 @@ test("walk mode encloses the house, stands on a floor and reaches the upper leve
 test("walking stops at walls instead of passing through them", async ({
   page,
 }) => {
-  test.setTimeout(120000);
+  test.setTimeout(180000);
   await ready(page);
   await page.locator('[data-mode="walk"]').click();
   const start = (await stats(page)).camera;
