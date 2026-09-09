@@ -1,5 +1,15 @@
 # Website verification — 9 September 2026
 
+## Revision state
+
+The interactive model and the dimensioned plans carry **v9.5-representation-repair**. The downloadable SketchUp and Blender files still carry **v9.4-client-handover**: they can only be reissued on a machine with Blender 4.5.9 and SketchUp, neither of which is installed on the authoring machine. The manifest labels each download with its own revision, the About panel states the split, and `06-model/v9/sync_gate.py` reports the native receipts as PENDING — failing outright if that declaration goes missing or disagrees with `audit/native-staging.json`. `FINAL-CLIENT-HANDOVER/` is untouched and still verifies against its manifest.
+
+## What changed in v9.5
+
+The upstairs read as having no walls because the cutaway clips walls to 1.10 m above their own floor and the toggle had no interior guard; inside a room the eye sits at 1.78 m. All 34 upper-floor walls were present and full height throughout. The control is now held and locked in interior views.
+
+Ten representation defects were repaired in the model itself, including the kitchen tile that spanned the open garage doorway, the garage wall that stopped 3.625 in above its slab, three unsupported stair-nook shelves, and the missing ceilings over both showers. Uncovered upper-floor area fell from 55.8 sf to 9.3 sf, the remainder being the stair void. Five further candidates were declined and recorded as open issues rather than modelled from insufficient evidence.
+
 The site converts the V9.4 handover into an interactive client viewer. Source documents and native models are preserved; only derived website assets are written.
 
 ## Source integrity

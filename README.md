@@ -27,7 +27,7 @@ Open the local address printed by Vite. Production build: `npm run build`; serve
 
 ## Fidelity and limits
 
-`public/model/house.json` derives from `06-model/v9/model.json`, version `v9.4-client-handover`. All **1,350 current existing-condition objects** retain their exact source vertices, polygons and material assignments. The 2,090-object native source also contains historical, demolition, superseded, staging and unbuilt objects, which are excluded from the web scene. The manifest records source and download SHA-256 hashes.
+`public/model/house.json` derives from `06-model/v9/model.json`, version `v9.5-representation-repair`. All **1,351 current existing-condition objects** retain their exact source vertices, polygons and material assignments. The 2,094-object native source also contains historical, demolition, superseded, staging and unbuilt objects, which are excluded from the web scene. The manifest records source and download SHA-256 hashes.
 
 The renderer rotates source Z-up coordinates to Y-up and converts inches to metres: `[x,y,z] → [x,z,-y] × 0.0254`. Concave polygons are triangulated for rendering. Both-floor inspection translates the entire upper floor 9 metres sideways and lowers it by the source floor elevation; assembled and interior views use source positions. The cutaway clips tall wall/opening/finish surfaces at 1.10 metres above each floor for inspection. These are display operations, not edits to the source files.
 
@@ -38,6 +38,10 @@ Finishes use the handover's reconstructed textures. Environment illumination, sh
 `public/documents/` holds exact copies of the five client handover files and the ZIP. **They are not published in this repository**, so a fresh clone does not redistribute the client's native models or PDFs, and the site no longer links to them: this is a viewer, not a download library. Their names, byte sizes and SHA-256 checksums stay recorded in `public/model/manifest.json`, and the asset test verifies them whenever the files are present locally.
 
 The model geometry in `public/model/house.json` _is_ published, since the explorer cannot run without it. The original handover files remain untouched outside this repository.
+
+## Revisions
+
+The interactive model and the plans carry `v9.5-representation-repair`. The downloadable SketchUp and Blender files still carry `v9.4-client-handover` and are labelled individually in the manifest — they need Blender 4.5.9 and SketchUp to reissue. `python3 ../06-model/v9/sync_gate.py` reports that state and fails if it is misdeclared; `python3 ../06-model/v9/sync.py` rebuilds everything and re-checks.
 
 ## Checks
 
