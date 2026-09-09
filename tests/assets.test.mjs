@@ -9,7 +9,7 @@ const manifest = JSON.parse(
   readFileSync(new URL("../public/model/manifest.json", import.meta.url)),
 );
 const sha = (b) => createHash("sha256").update(b).digest("hex");
-test("published asset is the V9.4 provisional source and has no duplicate objects", () => {
+test("published asset is the V9.5 provisional source and has no duplicate objects", () => {
   assert.equal(house.version, manifest.model_revision);
   assert.equal(house.units, "inches");
   assert.equal(house.field_gate, "NOT_PASSED");
@@ -88,7 +88,7 @@ test("every material texture exists", () => {
 });
 const original = new URL("../../06-model/v9/model.json", import.meta.url);
 test(
-  "web export preserves exact V9.4 vertices, polygons and face materials",
+  "web export preserves exact V9.5 vertices, polygons and face materials",
   { skip: !existsSync(original) },
   () => {
     const bytes = readFileSync(original);

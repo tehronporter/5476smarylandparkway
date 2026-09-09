@@ -136,7 +136,7 @@ test("reviewed hall and laundry viewpoints, auto rotation and PNG capture", asyn
   const png = page.waitForEvent("download");
   await page.locator("#capture").click();
   expect((await png).suggestedFilename()).toBe(
-    "5476-Maryland-overview-V9.4.png",
+    "5476-Maryland-overview-V9.5.png",
   );
   await page.locator("#fullscreen").click();
   await expect

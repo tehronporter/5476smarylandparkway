@@ -95,8 +95,8 @@ $("#app").innerHTML = `
   <section class="stage" aria-label="Property viewer">
    <div id="viewport"></div>
    <div class="stage-heading" id="stage-heading"><div class="eyebrow"><span class="status-dot"></span>5476 S MARYLAND PARKWAY</div><h1 id="view-title">The whole picture.</h1><p id="view-subtitle">Two levels. One home.</p></div>
-   <div class="view-tag" id="view-tag">${icon("Box")} EXISTING CONDITIONS <span>V9.4</span></div>
-   <div id="loading" role="status"><div class="loading-icon">${icon("Box")}</div><h2>Opening the house.</h2><p>Loading the V9.4 model and materials <span id="loading-percent"></span></p><div class="loading-track indeterminate" id="loading-track"><div id="loading-fill"></div></div></div>
+   <div class="view-tag" id="view-tag">${icon("Box")} EXISTING CONDITIONS <span>V9.5</span></div>
+   <div id="loading" role="status"><div class="loading-icon">${icon("Box")}</div><h2>Opening the house.</h2><p>Loading the V9.5 model and materials <span id="loading-percent"></span></p><div class="loading-track indeterminate" id="loading-track"><div id="loading-fill"></div></div></div>
    <div id="viewer-error" hidden role="alert"></div>
    <div class="floor-switch" id="floor-switch" role="group" aria-label="Floor view"><button data-layout="both" class="active">Both floors</button><button data-layout="ground">Ground</button><button data-layout="upper">Upper</button><button data-layout="assembled" title="Both floors in their source positions">${icon("Layers3")} Assembled</button></div>
    <div class="layout-caption" id="layout-caption"><span class="tiny-line"></span> FLOORS SHOWN SIDE BY SIDE <span class="caption-detail">Upper floor offset for inspection</span></div>
@@ -106,7 +106,7 @@ $("#app").innerHTML = `
    </div>
    <div id="walk-pad" hidden><button data-step="forward" aria-label="Walk forward">${icon("ArrowUp")}</button><div><button data-step="left" aria-label="Walk left">${icon("ArrowLeft")}</button><button data-step="backward" aria-label="Walk backward">${icon("ArrowDown")}</button><button data-step="right" aria-label="Walk right">${icon("ArrowRight")}</button></div><div class="walk-vertical"><button data-step="down" aria-label="Move down a level">${icon("ChevronDown")} Down</button><button data-step="up" aria-label="Move up a level">${icon("ChevronUp")} Up</button></div><span>Drag to look · WASD to move · Q/E up &amp; down</span></div>
    <div id="selection" hidden><button id="close-selection" aria-label="Close object details">${icon("X")}</button><span class="eyebrow">MODEL DETAIL</span><h3 id="object-name"></h3><p id="object-meta"></p><p id="object-note"></p><small id="object-source"></small></div>
-   <section id="plans-panel" hidden aria-label="Dimensioned floor plans"><div class="content-heading"><span class="eyebrow">THE DRAWINGS</span><h1>A plan for every level.</h1><p>Original V9.4 dimensioned plans, directly from the handover.</p></div><div class="plan-toolbar"><div class="segmented"><button data-plan="1" class="active">01 Ground floor</button><button data-plan="2">02 Upper floor</button></div><div class="plan-zoom"><button id="plan-minus" aria-label="Zoom out plan">${icon("Minus")}</button><button id="plan-fit">Fit</button><button id="plan-plus" aria-label="Zoom in plan">${icon("Plus")}</button></div></div><div class="plan-scroll"><img id="plan-image" src="/plans/level-1.png" alt="V9.4 dimensioned ground floor plan with garage, kitchen, powder room, stairs, living area and patio"/></div><p class="plan-footnote">Dimensions retain the handover’s provisional status. Use the source PDF for the drawing scale.</p></section>
+   <section id="plans-panel" hidden aria-label="Dimensioned floor plans"><div class="content-heading"><span class="eyebrow">THE DRAWINGS</span><h1>A plan for every level.</h1><p>Current V9.5 dimensioned plans from the shared house model.</p></div><div class="plan-toolbar"><div class="segmented"><button data-plan="1" class="active">01 Ground floor</button><button data-plan="2">02 Upper floor</button></div><div class="plan-zoom"><button id="plan-minus" aria-label="Zoom out plan">${icon("Minus")}</button><button id="plan-fit">Fit</button><button id="plan-plus" aria-label="Zoom in plan">${icon("Plus")}</button></div></div><div class="plan-scroll"><img id="plan-image" src="/plans/level-1.png" alt="V9.5 dimensioned ground floor plan with garage, kitchen, powder room, stairs, living area and patio"/></div><p class="plan-footnote">Dimensions retain the handover’s provisional status. Use the source PDF for the drawing scale.</p></section>
   </section>
   <aside class="sidebar" id="sidebar" aria-label="Explore the house">
    <div class="sidebar-top"><div><span class="eyebrow">MAKE YOURSELF AT HOME</span><h2>Explore the house.</h2></div><button id="close-sidebar" class="mobile-only" aria-label="Close spaces menu">${icon("X")}</button></div>
@@ -114,7 +114,7 @@ $("#app").innerHTML = `
    <div id="spaces-content"><div class="spaces-list">${views.map((v, i) => `${i === 1 ? '<div class="list-label">01 / GROUND FLOOR</div>' : i === 6 ? '<div class="list-label">02 / UPPER FLOOR</div>' : i === 12 ? '<div class="list-label">03 / OUTSIDE</div>' : ""}<button class="space-row ${i === 0 ? "active" : ""}" data-view="${v.id}" aria-pressed="${i === 0}"><span class="space-index">${i === 0 ? icon("House") : String(i).padStart(2, "0")}</span><span>${i === 0 ? "Whole house" : v.title}</span>${icon("ArrowUpRight")}</button>`).join("")}</div></div>
    <div id="about-content" hidden><h3>Built from the handover.</h3><p id="about-source">The viewer uses the current model’s vertices, materials and room cameras.</p><div class="about-metric"><strong id="about-source-count">—</strong><span>objects in the native source</span></div><div class="about-metric"><strong id="about-web-count">—</strong><span>current existing-condition objects in this viewer</span></div><div id="revision-note" class="revision-note" hidden></div><p>Historical geometry, superseded details, temporary staging and unbuilt shower glass are excluded.</p><h3>What remains approximate</h3><p>Shell depth, stair rise/run, floor registration, some bathroom dimensions and the hall recess position require field confirmation. Finishes and presentation lighting are illustrative.</p></div>
    <div class="display-controls" id="display-controls"><div class="control-label">DISPLAY</div><label class="toggle-row on">${icon("Box")}<span>Cutaway walls</span><input type="checkbox" id="cutaway" checked/><span class="switch"></span></label><label class="toggle-row">${icon("Layers3")}<span>Show ceilings</span><input type="checkbox" id="ceilings"/><span class="switch"></span></label><label class="toggle-row">${icon("Orbit")}<span>Auto rotate</span><input type="checkbox" id="auto"/><span class="switch"></span></label></div>
-   <div class="sidebar-bottom"><div class="property-facts"><div><strong>02</strong><span>Levels</span></div><div><strong>02</strong><span>Bedrooms</span></div><div><strong>V9.4</strong><span>Handover</span></div></div><p id="view-note">${views[0].note}</p><button class="source-note" id="model-note">${icon("Info")} Provisional existing conditions ${icon("ArrowUpRight")}</button></div>
+   <div class="sidebar-bottom"><div class="property-facts"><div><strong>02</strong><span>Levels</span></div><div><strong>02</strong><span>Bedrooms</span></div><div><strong>V9.5</strong><span>Handover</span></div></div><p id="view-note">${views[0].note}</p><button class="source-note" id="model-note">${icon("Info")} Provisional existing conditions ${icon("ArrowUpRight")}</button></div>
   </aside>
  </main>
  <footer class="footer"><span><span class="status-dot"></span> 5476 S MARYLAND PKWY <span class="footer-divider">/</span> EXISTING HOUSE</span><span class="footer-middle">A closer look at the place you call home.</span><button id="footer-files">VIEW FLOOR PLANS ${icon("ArrowUpRight")}</button></footer>
@@ -287,7 +287,7 @@ $("#capture").onclick = () => {
   if (!viewer) return;
   const a = document.createElement("a");
   a.href = viewer.screenshot();
-  a.download = `5476-Maryland-${activeView.id}-V9.4.png`;
+  a.download = `5476-Maryland-${activeView.id}-V9.5.png`;
   a.click();
   toast("View saved as PNG");
 };
@@ -323,10 +323,10 @@ function showObject(e: Element | null) {
     .join(" · ");
   $("#object-note").textContent =
     e.note ||
-    "Part of the V9.4 existing-condition model. Local details and placement may be approximate.";
+    "Part of the V9.5 existing-condition model. Local details and placement may be approximate.";
   $("#object-source").textContent = e.evidence_refs?.length
     ? "Source references: " + e.evidence_refs.join(", ")
-    : "Source: V9.4 shared model";
+    : "Source: V9.5 shared model";
 }
 $("#close-selection").onclick = () => {
   viewer?.clearSelection();
@@ -364,7 +364,7 @@ all("[data-plan]").forEach((b) =>
     all("[data-plan]").forEach((x) => x.classList.toggle("active", x === b));
     $<HTMLImageElement>("#plan-image").src = `/plans/level-${planLevel}.png`;
     $<HTMLImageElement>("#plan-image").alt =
-      `V9.4 dimensioned ${planLevel === 1 ? "ground" : "upper"} floor plan`;
+      `V9.5 dimensioned ${planLevel === 1 ? "ground" : "upper"} floor plan`;
     planZoom = 1;
     applyPlanZoom();
   }),

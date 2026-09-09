@@ -1,6 +1,6 @@
 # 5476 Maryland — House Explorer
 
-An interactive viewer for 5476 S Maryland Parkway. Built from the **V9.4 client handover**, with the two floors, current interior geometry, original material textures, room viewpoints and dimensioned plans.
+An interactive viewer for 5476 S Maryland Parkway. Built from the **V9.5 shared model**, with the two floors, current interior geometry, original material textures, room viewpoints and dimensioned plans.
 
 ## Run locally
 
@@ -27,7 +27,7 @@ Open the local address printed by Vite. Production build: `npm run build`; serve
 
 ## Fidelity and limits
 
-`public/model/house.json` derives from `06-model/v9/model.json`, version `v9.5-representation-repair`. All **1,351 current existing-condition objects** retain their exact source vertices, polygons and material assignments. The 2,094-object native source also contains historical, demolition, superseded, staging and unbuilt objects, which are excluded from the web scene. The manifest records source and download SHA-256 hashes.
+`public/model/house.json` derives from `06-model/v9/model.json`, version `v9.5-representation-repair`. All **1,353 current existing-condition objects** retain their exact source vertices, polygons and material assignments. The 2,096-object native source also contains historical, demolition, superseded, staging and unbuilt objects, which are excluded from the web scene. The manifest records source and download SHA-256 hashes.
 
 The renderer rotates source Z-up coordinates to Y-up and converts inches to metres: `[x,y,z] → [x,z,-y] × 0.0254`. Concave polygons are triangulated for rendering. Both-floor inspection translates the entire upper floor 9 metres sideways and lowers it by the source floor elevation; assembled and interior views use source positions. The cutaway clips tall wall/opening/finish surfaces at 1.10 metres above each floor for inspection. These are display operations, not edits to the source files.
 
@@ -41,7 +41,7 @@ The model geometry in `public/model/house.json` _is_ published, since the explor
 
 ## Revisions
 
-The interactive model and the plans carry `v9.5-representation-repair`. The downloadable SketchUp and Blender files still carry `v9.4-client-handover` and are labelled individually in the manifest — they need Blender 4.5.9 and SketchUp to reissue. `python3 ../06-model/v9/sync_gate.py` reports that state and fails if it is misdeclared; `python3 ../06-model/v9/sync.py` rebuilds everything and re-checks.
+The interactive model, plans and client natives carry `v9.5-representation-repair`. The manifest derives native status from the client receipt's source hash. `python3 ../06-model/v9/sync.py --natives` rebuilds the entire release using the cached official SketchUp API and Blender 4.5.9; `--check` verifies drift without writes.
 
 ## Checks
 

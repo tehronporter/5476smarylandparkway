@@ -60,7 +60,7 @@ export const views: View[] = [
     level: "Upper floor",
     scene: "bedroom-01",
     interior: true,
-    note: "Existing window and room envelope from the V9.4 handover. The window-wall clear-width basis is 230 7/16 inches; overall registration remains provisional.",
+    note: "Existing window and room envelope from the V9.5 handover. The window-wall clear-width basis is 230 7/16 inches; overall registration remains provisional.",
   },
   {
     id: "bathroom1",
